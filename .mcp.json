@@ -5,6 +5,16 @@
       "args": [
         "C:\\Users\\yshub\\.claude\\Android BugBounty\\tools\\android-mcp\\server.py"
       ]
+    },
+    "burp": {
+      "type": "sse",
+      "url": "http://127.0.0.1:9876/"
+    },
+    "burp-bb": {
+      "command": "C:\\Users\\yshub\\.claude\\Android BugBounty\\tools\\burp-mcp\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\yshub\\.claude\\Android BugBounty\\tools\\burp-mcp\\server.py"
+      ]
     }
   }
 }
