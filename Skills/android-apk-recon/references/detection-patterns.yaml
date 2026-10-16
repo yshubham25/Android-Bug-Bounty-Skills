@@ -1,0 +1,46 @@
+# Detection patterns for APK recon
+
+endpoint_patterns:
+  - name: REST API
+    pattern: 'https?://[a-z0-9.-]+/(?:api|v[0-9]|rest)/[^\s"]*'
+  - name: GraphQL
+    pattern: 'https?://[a-z0-9.-]+/graphql'
+  - name: Internal URL
+    pattern: 'https?://(?:internal|staging|dev|test|qa|sandbox)[.-][^\s"]*'
+  - name: Retrofit
+    pattern: '@(?:GET|POST|PUT|DELETE|PATCH)\s*\(\s*"([^"]+)"'
+  - name: OkHttp baseUrl
+    pattern: 'baseUrl\s*\(\s*"(https?://[^"]+)"'
+
+intercom_patterns:
+  - name: SDK package
+    pattern: 'io\.intercom\.android'
+  - name: API host
+    pattern: 'mobile-messenger\.intercom\.com'
+  - name: SDK credential
+    pattern: 'android_sdk-[A-Za-z0-9_-]{20,}'
+  - name: Identity verification
+    pattern: 'user_hash|userHash|identity_verification'
+  - name: HMAC
+    pattern: 'HMAC|HmacSHA256'
+  - name: Login identified
+    pattern: 'loginIdentifiedUser|registerIdentifiedUser'
+  - name: Conversation API
+    pattern: '/messenger/mobile/conversations'
+
+secret_patterns:
+  - name: AWS Key
+    pattern: '\b(?:AKIA|ASIA)[A-Z0-9]{16}\b'
+    severity: critical
+  - name: Google API
+    pattern: '\bAIza[0-9A-Za-z_-]{35}\b'
+    severity: medium
+  - name: GitHub Token
+    pattern: '\bgh[pousr]_[A-Za-z0-9_]{20,}\b'
+    severity: high
+  - name: Private Key
+    pattern: '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----'
+    severity: critical
+  - name: Generic Secret
+    pattern: '(?i)(?:api_key|secret|password|access_token)\s*[:=]\s*["\x27][^\s]{8,}'
+    severity: medium
