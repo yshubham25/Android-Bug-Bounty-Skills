@@ -1,0 +1,6 @@
+[project]
+name = "android-bb-mcp"
+version = "0.1.0"
+description = "MCP server driving the rooted Magisk API-34 emulator for Android bug-bounty work"
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.9.0"]
